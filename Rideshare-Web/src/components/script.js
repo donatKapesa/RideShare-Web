@@ -7,8 +7,7 @@ const backendUrl = 'https://shrouded-fjord-72003.herokuapp.com/';
 //const backendUrl = 'https://eventregistration-backend-123.herokuapp.com/';
 
 var AXIOS = axios.create({
-  baseURL: backendUrl,
-  headers: { 'Access-Control-Allow-Origin': frontendUrl }
+  baseURL: backendUrl
 });
 
 
@@ -28,44 +27,39 @@ function EventDto (name, date, start, end) {
 
 //function drivers()
 
-
 export default {
   name: 'eventregistration',
   data () {
     return {
-      participants: [],
-      newParticipant: '',
-      errorParticipant: '',
-      response: []
+      drivers: [],
+      passengers: [],
+      trips: [],
     }
   },
   created: function () {
-    // Initializing participants from backend
-      // AXIOS.get(`/participants`)
-      // .then(response => {
-      //   // JSON responses are automatically parsed.
-      //   console.log(response);
-      //   this.participants = response.data
-      // })
-      // .catch(e => {
-      //   this.errorParticipant = e;
-      // });
 
-      AXIOS.get(`/drivers`)
+      AXIOS.get(`/drivers`) // change to /drivers/active once ellina is done
       .then(response => {
-        // JSON responses are automatically parsed.
-        console.log(response);
+        console.log(response.data);
         this.drivers = response.data
       })
       .catch(e => {
         this.errorParticipant = e;
       });
 
-      AXIOS.get(`/passengers`)
+      AXIOS.get(`/passengers`) // change to /passengers/active once ellina is done
       .then(response => {
-        // JSON responses are automatically parsed.
-        console.log(response);
+        console.log(response.data);
         this.passengers = response.data
+      })
+      .catch(e => {
+        this.errorParticipant = e;
+      });
+
+      AXIOS.get(`/trips`) //change to /trips/active once ellina is done
+      .then(response => {
+        console.log(response.data);
+        this.trips = response.data
       })
       .catch(e => {
         this.errorParticipant = e;
