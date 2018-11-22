@@ -2,16 +2,25 @@
   <div id="rideshare">
     <div id="fleetstatus">
       <h2>Fleet Status Overview</h2>
-      
+
       <div class="medium-6 medium-offset-3 ctrl">
         <form class="searchForm" v-on:submit.prevent="submitSearch">
           <input type="text" placeholder="search..." style="text-align:center; margin-bottom:30px">
         </form>
       </div>
+      
 
     <!-- TODO: add some styling -->
     <div class="table">
+    
       <div class="column">
+
+      <div class="medium-6 medium-offset-3 ctrl">
+        <form class="searchForm" v-on:submit.prevent="submitSearch">
+          <input type="text" placeholder="search drivers..." style="text-align:center; margin-bottom:30px">
+        </form>
+      </div>
+
         <h3>ACTIVE DRIVERS</h3>
         <span>Name</span>
         <span>----</span>
@@ -24,6 +33,13 @@
       </div>
 
       <div class="column">
+
+      <div class="medium-6 medium-offset-3 ctrl">
+        <form class="searchForm" v-on:submit.prevent="submitSearch">
+          <input type="text" placeholder="search passengers..." style="text-align:center; margin-bottom:30px">
+        </form>
+      </div>
+
         <h3>ACTIVE PASSENGERS</h3>
         <span>Name</span>
         <span>----</span>
@@ -37,6 +53,13 @@
       </div>
 
       <div class="column">
+
+      <div class="medium-6 medium-offset-3 ctrl">
+        <form class="searchForm" v-on:submit.prevent="submitSearch">
+          <input type="text" placeholder="search routes..." style="text-align:center; margin-bottom:30px">
+        </form>
+      </div>
+
         <h3>ACTIVE ROUTES</h3>
         <!-- add style -->
         <span>source</span>
