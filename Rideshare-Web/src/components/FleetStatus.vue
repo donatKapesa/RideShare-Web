@@ -50,33 +50,6 @@
         </ul>
       </div>
     </div>
-
-        <!-- <td>Active Drivers</td>
-        <tr v-for="driver in drivers" >
-          <td>
-            <td>{{ passenger.firstName }}</td>
-          </td>
-        </tr>
-
-        <td>Active Passengers</td>
-        <tr v-for="passenger in passengers" >
-          <td>{{ passenger.firstName }}</td>
-        </tr>
-
-        <td>Active Routes</td>
-        <tr v-for="passenger in passengers" >
-          <td>{{ passenger.firstName }}</td>
-        </tr> -->
-
-      <!-- <tr>
-          <td>
-            <input type="text" v-model="newParticipant" placeholder="Participant Name">
-          </td>
-          <td>
-              <button @click="createParticipant(newParticipant)">Create Passenger</button>
-          </td>
-      </tr> -->
-
     <p>
       <span v-if="errorParticipant" style="color:red">Error: {{errorParticipant}} </span>
     </p>
@@ -84,26 +57,22 @@
 </template>
 
 <script src="./script.js">
-  
 </script>
 
 <style>
-  #rideshare {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    color: #2c3e50;
-    background: #f2ece8;
-  }
+/* #rideshare {
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  color: #2c3e50;
+  background: #f2ece8;
+}
 
-  .overview {
-    display: flex;
-  }
+.overview {
+  display: flex;
+}
 
-  a {
-    color: inherit;
-  }
+a {
+  color: inherit;
+} */
 
-
-
-  /* style for search bar */
-
+/* style for search bar */
 </style>

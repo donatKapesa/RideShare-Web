@@ -28,7 +28,7 @@ function EventDto (name, date, start, end) {
 //function drivers()
 
 export default {
-  name: 'eventregistration',
+  name: 'script',
   data () {
     return {
       drivers: [],

@@ -64,29 +64,16 @@
 
 
 <script src="./script.js">
-
 export default {
+  name: "Rankings",
 
-    name: 'Rankings',
-
-    data() {
-
-        return {
-
-            
-
-        }
-
-    }
-
-}
-
+  data() {
+    return {};
+  }
+};
 </script>
 
 
 
 <style>
-
-
-
 </style>
