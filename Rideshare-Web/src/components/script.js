@@ -3,7 +3,8 @@ import axios from 'axios';
 //// calling backend
 
 const frontendUrl = 'http://localhost:8087/'; // change before deploying
-const backendUrl = 'https://shrouded-fjord-72003.herokuapp.com/';
+//const backendUrl = 'https://shrouded-fjord-72003.herokuapp.com/';
+const backendUrl = 'https://sprint3-ecse321.herokuapp.com/';
 //const backendUrl = 'https://eventregistration-backend-123.herokuapp.com/';
 
 var AXIOS = axios.create({
