@@ -3,11 +3,7 @@
     <div id="fleetstatus">
       <h2>Fleet Status Overview</h2>
 
-      <div class="medium-6 medium-offset-3 ctrl">
-        <form class="searchForm" v-on:submit.prevent="submitSearch">
-          <input type="text" placeholder="search..." style="text-align:center; margin-bottom:30px">
-        </form>
-      </div>
+    
       
 
     <!-- TODO: add some styling -->
@@ -15,13 +11,15 @@
     
       <div class="column">
 
-      <div class="medium-6 medium-offset-3 ctrl">
-        <form class="searchForm" v-on:submit.prevent="submitSearch">
-          <input type="text" v-model="searchDrivers" placeholder="search drivers..." style="text-align:center; margin-bottom:30px">
-        </form>
-      </div>
+     
 
-        <h3>ACTIVE DRIVERS</h3>
+        <h3>Active Drivers</h3>
+         <div class="medium-6 medium-offset-3 ctrl">
+        <form class="searchForm" v-on:submit.prevent="submitSearch">
+          <input type="text" v-model="searchDrivers" placeholder="search active drivers..." style="text-align:center; margin-bottom:30px">
+        </form>
+      </div>       
+       
         <span>Name</span>
         <span>----</span>
         <span>Age</span>
@@ -34,13 +32,15 @@
 
       <div class="column">
 
-      <div class="medium-6 medium-offset-3 ctrl">
+      
+
+        <h3>Active Passengers</h3>
+        <div class="medium-6 medium-offset-3 ctrl">
         <form class="searchForm" v-on:submit.prevent="submitSearch">
-          <input type="text" v-model="searchPassengers" placeholder="search passengers..." style="text-align:center; margin-bottom:30px">
+          <input type="text" v-model="searchPassengers" placeholder="search active passengers..." style="text-align:center; margin-bottom:30px">
         </form>
       </div>
-
-        <h3>ACTIVE PASSENGERS</h3>
+      
         <span>Name</span>
         <span>----</span>
         <span>Current or Latest Trip</span>
@@ -54,13 +54,15 @@
 
       <div class="column">
 
-      <div class="medium-6 medium-offset-3 ctrl">
+      
+
+        <h3>Active Routes</h3>
+        <div class="medium-6 medium-offset-3 ctrl">
         <form class="searchForm" v-on:submit.prevent="submitSearch">
-          <input type="text" v-model="searchTrips" placeholder="search routes..." style="text-align:center; margin-bottom:30px">
+          <input type="text" v-model="searchTrips" placeholder="search active routes..." style="text-align:center; margin-bottom:30px">
         </form>
       </div>
 
-        <h3>ACTIVE ROUTES</h3>
         <!-- add style -->
         <span>source</span>
         <span>---></span>
@@ -79,15 +81,16 @@
     <div id="rankings">
       <h1>Rankings</h1>
 
-        <div class="medium-6 medium-offset-3 ctrl">
-        <form class="searchForm" v-on:submit.prevent="submitSearch">
-          <input type="text" placeholder="search..." style="text-align:center; margin-bottom:30px">
-        </form>
-      </div>
+       
 
     <div class="table">
       <div class="column">
-        <h3>LOYAL PASSENGERS</h3>
+        <h3>Loyal Passengers</h3>
+         <div class="medium-6 medium-offset-3 ctrl">
+        <form class="searchForm" v-on:submit.prevent="submitSearch">
+          <input type="text" placeholder="search loyal passengers..." style="text-align:center; margin-bottom:30px">
+        </form>
+      </div>
         <span>Name</span>
         <span>----</span>
         <span>Number of Trips</span>
@@ -99,14 +102,15 @@
         </ul>
       </div>
 
-      <div class="medium-6 medium-offset-3 ctrl">
-        <form class="searchForm" v-on:submit.prevent="submitSearch">
-          <input type="text" v-model="searchDrivers" placeholder="search drivers..." style="text-align:center; margin-bottom:30px">
-        </form>
-      </div>
+      
 
       <div class="column">
-        <h3>TOP DRIVERS</h3>
+        <h3>Top Drivers</h3>
+        <div class="medium-6 medium-offset-3 ctrl">
+        <form class="searchForm" v-on:submit.prevent="submitSearch">
+          <input type="text" v-model="searchDrivers" placeholder="search top drivers..." style="text-align:center; margin-bottom:30px">
+        </form>
+      </div>
         <span>Name</span>
         <span>----</span>
         <span>Rating</span>
@@ -123,7 +127,12 @@
         <!-- not sure how to do this. Maybe count number of souce - destination pairs -->
         <!-- will try to link to google maps for bonus -->
       <div class="column">
-        <h3>POPULAR ROUTES</h3>
+        <h3>Popular Routes</h3>
+       <div class="medium-6 medium-offset-3 ctrl">
+        <form class="searchForm" v-on:submit.prevent="submitSearch">
+          <input type="text" v-model="searchTrips" placeholder="search popular routes.." style="text-align:center; margin-bottom:30px">
+        </form>
+      </div>
         <!-- add style -->
         <span>source</span>
         <span>---></span>
