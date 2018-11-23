@@ -3,9 +3,6 @@
     <div id="fleetstatus">
       <h2>Fleet Status Overview</h2>
 
-    
-      
-
     <!-- TODO: add some styling -->
     <div class="table">
     
@@ -16,14 +13,14 @@
         <h3>Active Drivers</h3>
          <div class="medium-6 medium-offset-3 ctrl">
         <form class="searchForm" v-on:submit.prevent="submitSearch">
-          <input type="text" v-model="searchDrivers" placeholder="search active drivers..." style="text-align:center; margin-bottom:30px">
+          <input type="text" v-model="searchActiveDriver" placeholder="search active drivers..." style="text-align:center; margin-bottom:30px">
         </form>
       </div>       
        
         <span>Name</span>
         <span>----</span>
         <span>Age</span>
-        <ul v-for="d in filteredDrivers">
+        <ul v-for="d in filteredActiveDrivers">
           <span>{{d.firstName}} {{d.lastName}}</span>
           <span>----</span>
           <span>{{d.age}}</span>
@@ -37,18 +34,20 @@
         <h3>Active Passengers</h3>
         <div class="medium-6 medium-offset-3 ctrl">
         <form class="searchForm" v-on:submit.prevent="submitSearch">
-          <input type="text" v-model="searchPassengers" placeholder="search active passengers..." style="text-align:center; margin-bottom:30px">
+          <input type="text" v-model="searchActivePassenger" placeholder="search active passengers..." style="text-align:center; margin-bottom:30px">
         </form>
       </div>
       
         <span>Name</span>
         <span>----</span>
         <span>Current or Latest Trip</span>
-        <ul v-for="p in filteredPassengers">
+        <ul v-for="p in filteredActivePassengers">
           <span>{{p.firstName}} {{p.lastName}}</span>
-          <span>----</span>
-          <!-- TODO: replace with p.numberOfTrips -->
-          <span>{{ p.trip[0].pickUpLocation }}</span>
+          <span>:</span>
+          <span>{{ p.trip[p.trip.length - 1].pickUpLocation }}</span>
+          <span>----></span>
+          <span>{{ p.trip[p.trip.length - 1].destination }}</span>
+          <!-- <span>{{ p.trip }}</span> -->
         </ul>
       </div>
 
@@ -59,7 +58,7 @@
         <h3>Active Routes</h3>
         <div class="medium-6 medium-offset-3 ctrl">
         <form class="searchForm" v-on:submit.prevent="submitSearch">
-          <input type="text" v-model="searchTrips" placeholder="search active routes..." style="text-align:center; margin-bottom:30px">
+          <input type="text" v-model="searchActiveTrip" placeholder="search active routes..." style="text-align:center; margin-bottom:30px">
         </form>
       </div>
 
@@ -68,7 +67,7 @@
         <span>---></span>
         <span>destination</span>
         <span>arrival time</span>
-        <ul v-for="t in filteredTrips">
+        <ul v-for="t in filteredActiveTrips">
           <span>{{ t.pickUpLocation }}</span>
           <span>---></span>
           <span>{{ t.destination }}</span>
@@ -88,17 +87,17 @@
         <h3>Loyal Passengers</h3>
          <div class="medium-6 medium-offset-3 ctrl">
         <form class="searchForm" v-on:submit.prevent="submitSearch">
-          <input type="text" placeholder="search loyal passengers..." style="text-align:center; margin-bottom:30px">
+          <input type="text" v-model="searchActivePassenger" placeholder="search loyal passengers..." style="text-align:center; margin-bottom:30px">
         </form>
       </div>
         <span>Name</span>
         <span>----</span>
         <span>Number of Trips</span>
-        <ul v-for="p in passengers">
+        <ul v-for="p in filteredActivePassengers">
           <span>{{p.firstName}} {{p.lastName}}</span>
           <span>----</span>
           <!-- TODO: replace with p.numberOfTrips -->
-          <span>{{ p.age }}</span>
+          <span>{{ p.tripCounter }}</span>
         </ul>
       </div>
 
@@ -108,29 +107,24 @@
         <h3>Top Drivers</h3>
         <div class="medium-6 medium-offset-3 ctrl">
         <form class="searchForm" v-on:submit.prevent="submitSearch">
-          <input type="text"  placeholder="search top drivers..." style="text-align:center; margin-bottom:30px">
+          <input type="text" v-model="searchDrivers" placeholder="search top drivers..." style="text-align:center; margin-bottom:30px">
         </form>
       </div>
         <span>Name</span>
         <span>----</span>
         <span>Rating</span>
-        <!-- will try to add links for more info -->
-        <!-- will sort and display them in order -->
-        <!-- TODO: replace with d.rating-->
         <ul v-for="d in filteredDrivers">
           <span>{{d.firstName}} {{d.lastName}}</span>
           <span>----</span>
-          <span>{{d.age}}</span>
+          <span>{{d.ranking}}</span>
         </ul>
       </div>
-
-        <!-- not sure how to do this. Maybe count number of souce - destination pairs -->
-        <!-- will try to link to google maps for bonus -->
+      
       <div class="column">
         <h3>Popular Routes</h3>
        <div class="medium-6 medium-offset-3 ctrl">
         <form class="searchForm" v-on:submit.prevent="submitSearch">
-          <input type="text"  placeholder="search popular routes.." style="text-align:center; margin-bottom:30px">
+          <input type="text" v-model="searchTrips" placeholder="search popular routes.." style="text-align:center; margin-bottom:30px">
         </form>
       </div>
         <!-- add style -->
@@ -138,7 +132,7 @@
         <span>---></span>
         <span>destination</span>
         <span>arrival time</span>
-        <ul v-for="t in trips">
+        <ul v-for="t in filteredTrips">
           <span>{{ t.pickUpLocation }}</span>
           <span>---></span>
           <span>{{ t.destination }}</span>
@@ -150,11 +144,6 @@
   </div>
 
     </div>
-
-  <!-- ranking -->
-  <!-- will add js to show this div only when user clicks show -->
-  
-
 
 </template>
 
@@ -168,19 +157,6 @@ export default {
     };
   }
 };
-
-// const app = new Vue ({
-//   el: '#rideshare',
-//   search: '',
-//   tripsList: trips,
-//   computed: {
-//     filteredList() {
-//       return this.tripsList.filter(trip => {
-//         return trip.pickUpLocation.toLowerCase().includes(this.search.toLowerCase())
-//       })
-//     }
-//   }
-// })
 
 </script>
 
