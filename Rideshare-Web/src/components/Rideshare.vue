@@ -108,7 +108,7 @@
         <h3>Top Drivers</h3>
         <div class="medium-6 medium-offset-3 ctrl">
         <form class="searchForm" v-on:submit.prevent="submitSearch">
-          <input type="text" v-model="searchDrivers" placeholder="search top drivers..." style="text-align:center; margin-bottom:30px">
+          <input type="text"  placeholder="search top drivers..." style="text-align:center; margin-bottom:30px">
         </form>
       </div>
         <span>Name</span>
@@ -130,7 +130,7 @@
         <h3>Popular Routes</h3>
        <div class="medium-6 medium-offset-3 ctrl">
         <form class="searchForm" v-on:submit.prevent="submitSearch">
-          <input type="text" v-model="searchTrips" placeholder="search popular routes.." style="text-align:center; margin-bottom:30px">
+          <input type="text"  placeholder="search popular routes.." style="text-align:center; margin-bottom:30px">
         </form>
       </div>
         <!-- add style -->
