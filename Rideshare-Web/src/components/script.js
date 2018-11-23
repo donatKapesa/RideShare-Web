@@ -3,8 +3,8 @@ import axios from 'axios';
 //// calling backend
 
 const frontendUrl = 'http://localhost:8087/'; // change before deploying
-//const backendUrl = 'https://shrouded-fjord-72003.herokuapp.com/';
-const backendUrl = 'https://sprint3-ecse321.herokuapp.com/';
+const backendUrl = 'https://shrouded-fjord-72003.herokuapp.com/';
+//const backendUrl = 'https://sprint3-ecse321.herokuapp.com/';
 //const backendUrl = 'https://eventregistration-backend-123.herokuapp.com/';
 
 var AXIOS = axios.create({
@@ -14,12 +14,12 @@ var AXIOS = axios.create({
 
 ////
 
-function ParticipantDto (name) {
+function ParticipantDto(name) {
   this.name = name
   this.events = []
 }
 
-function EventDto (name, date, start, end) {
+function EventDto(name, date, start, end) {
   this.name = name
   this.eventDate = date
   this.startTime = start
@@ -30,51 +30,74 @@ function EventDto (name, date, start, end) {
 
 export default {
   name: 'script',
-  data () {
+  data() {
     return {
       drivers: [],
       passengers: [],
       trips: [],
+      searchTrips: '',
+      searchPassengers: '',
+      searchDrivers: '',
     }
   },
-  created: function () {
 
-      AXIOS.get(`/drivers`) // change to /drivers/active once ellina is done
+  methods: {
+
+  },
+
+  created() {
+
+    AXIOS.get(`/drivers`) // change to /drivers/active once ellina is done
       .then(response => {
-        console.log(response.data);
+        //console.log(response.data);
         this.drivers = response.data
       })
-      .catch(e => {
-        this.errorParticipant = e;
-      });
 
-      AXIOS.get(`/passengers`) // change to /passengers/active once ellina is done
+    AXIOS.get(`/passengers`) // change to /passengers/active once ellina is done
       .then(response => {
-        console.log(response.data);
+        //console.log(response.data);
         this.passengers = response.data
       })
-      .catch(e => {
-        this.errorParticipant = e;
-      });
 
-      AXIOS.get(`/trips`) //change to /trips/active once ellina is done
+    AXIOS.get(`/trips`) //change to /trips/active once ellina is done
       .then(response => {
         console.log(response.data);
         this.trips = response.data
-      })
-      .catch(e => {
-        this.errorParticipant = e;
+        //filteredItems(response.data);
+        
       });
 
   },
-methods: {
-  createParticipant: function (participantName) {
-    // Create a new participant and add it to the list of participants
-    var p = new ParticipantDto(participantName)
-    this.participants.push(p)
-    // Reset the name field for new participants
-    this.newParticipant = ''
+  computed: {
+    filteredTrips: function() {
+      while(this.trips) {
+        return this.trips.filter((trip) => {
+          console.log(this.searchTrips);
+          return trip.pickUpLocation.toLowerCase().includes(this.searchTrips)
+          || trip.destination.toLowerCase().includes(this.searchTrips);
+        });
+      }
+    },
+
+    filteredPassengers: function() {
+      while(this.passengers) {
+        return this.passengers.filter((passenger) => {
+          console.log(this.searchPassengers);
+          return passenger.firstName.toLowerCase().includes(this.searchPassengers)
+          || passenger.lastName.toLowerCase().includes(this.searchPassengers);
+        });
+      }
+    },
+
+    filteredDrivers: function() {
+      while(this.drivers) {
+        return this.drivers.filter((driver) => {
+          return driver.firstName.toLowerCase().includes(this.searchDrivers)
+          || driver.lastName.toLowerCase().includes(this.searchDrivers);
+        });
+      }
+    }
+
   }
-}
 }
 

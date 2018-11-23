@@ -17,7 +17,7 @@
 
       <div class="medium-6 medium-offset-3 ctrl">
         <form class="searchForm" v-on:submit.prevent="submitSearch">
-          <input type="text" placeholder="search drivers..." style="text-align:center; margin-bottom:30px">
+          <input type="text" v-model="searchDrivers" placeholder="search drivers..." style="text-align:center; margin-bottom:30px">
         </form>
       </div>
 
@@ -25,7 +25,7 @@
         <span>Name</span>
         <span>----</span>
         <span>Age</span>
-        <ul v-for="d in drivers">
+        <ul v-for="d in filteredDrivers">
           <span>{{d.firstName}} {{d.lastName}}</span>
           <span>----</span>
           <span>{{d.age}}</span>
@@ -36,7 +36,7 @@
 
       <div class="medium-6 medium-offset-3 ctrl">
         <form class="searchForm" v-on:submit.prevent="submitSearch">
-          <input type="text" placeholder="search passengers..." style="text-align:center; margin-bottom:30px">
+          <input type="text" v-model="searchPassengers" placeholder="search passengers..." style="text-align:center; margin-bottom:30px">
         </form>
       </div>
 
@@ -44,7 +44,7 @@
         <span>Name</span>
         <span>----</span>
         <span>Current or Latest Trip</span>
-        <ul v-for="p in passengers">
+        <ul v-for="p in filteredPassengers">
           <span>{{p.firstName}} {{p.lastName}}</span>
           <span>----</span>
           <!-- TODO: replace with p.numberOfTrips -->
@@ -56,7 +56,7 @@
 
       <div class="medium-6 medium-offset-3 ctrl">
         <form class="searchForm" v-on:submit.prevent="submitSearch">
-          <input type="text" placeholder="search routes..." style="text-align:center; margin-bottom:30px">
+          <input type="text" v-model="searchTrips" placeholder="search routes..." style="text-align:center; margin-bottom:30px">
         </form>
       </div>
 
@@ -66,7 +66,7 @@
         <span>---></span>
         <span>destination</span>
         <span>arrival time</span>
-        <ul v-for="t in trips">
+        <ul v-for="t in filteredTrips">
           <span>{{ t.pickUpLocation }}</span>
           <span>---></span>
           <span>{{ t.destination }}</span>
@@ -74,9 +74,6 @@
         </ul>
       </div>
     </div>
-    <p>
-      <span v-if="errorParticipant" style="color:red">Error: {{errorParticipant}} </span>
-    </p>
     </div>
 
     <div id="rankings">
@@ -102,6 +99,12 @@
         </ul>
       </div>
 
+      <div class="medium-6 medium-offset-3 ctrl">
+        <form class="searchForm" v-on:submit.prevent="submitSearch">
+          <input type="text" v-model="searchDrivers" placeholder="search drivers..." style="text-align:center; margin-bottom:30px">
+        </form>
+      </div>
+
       <div class="column">
         <h3>TOP DRIVERS</h3>
         <span>Name</span>
@@ -110,7 +113,7 @@
         <!-- will try to add links for more info -->
         <!-- will sort and display them in order -->
         <!-- TODO: replace with d.rating-->
-        <ul v-for="d in drivers">
+        <ul v-for="d in filteredDrivers">
           <span>{{d.firstName}} {{d.lastName}}</span>
           <span>----</span>
           <span>{{d.age}}</span>
@@ -147,6 +150,7 @@
 </template>
 
 <script src="./script.js">
+
 export default {
   name: "rideshare",
   data() {
@@ -155,6 +159,20 @@ export default {
     };
   }
 };
+
+// const app = new Vue ({
+//   el: '#rideshare',
+//   search: '',
+//   tripsList: trips,
+//   computed: {
+//     filteredList() {
+//       return this.tripsList.filter(trip => {
+//         return trip.pickUpLocation.toLowerCase().includes(this.search.toLowerCase())
+//       })
+//     }
+//   }
+// })
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

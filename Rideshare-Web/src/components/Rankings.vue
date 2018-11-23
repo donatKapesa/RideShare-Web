@@ -4,7 +4,7 @@
 
         <h1>Rankings</h1>
 
-            <div class="medium-6 medium-offset-3 ctrl">
+      <div class="medium-6 medium-offset-3 ctrl">
         <form class="searchForm" v-on:submit.prevent="submitSearch">
           <input type="text" placeholder="search..." style="text-align:center; margin-bottom:30px">
         </form>
