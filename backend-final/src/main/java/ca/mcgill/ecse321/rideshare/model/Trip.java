@@ -40,7 +40,7 @@ public class Trip implements Serializable {
 	private Boolean isComplete;
 	
 	@Column(name = "departureStatus")
-	private Boolean hasStarted;
+	private Boolean ongoing;
 	
 	@Column(name = "fare")
 	private Double fare;
@@ -72,7 +72,7 @@ protected Trip() {
 }
 
 public Trip(String date, String pickUpLocation, String destination, //SpecificRating specificRating, 
-		String pickUpTime, String arrivalTime, Integer availableSeats, Boolean isComplete, Boolean hasStarted, Double fare,
+		String pickUpTime, String arrivalTime, Integer availableSeats, Boolean isComplete, Boolean ongoing, Double fare,
 		Integer estimatedTripDuration, Integer driverRating, Integer passengerRating, Integer distance, Driver driver, Long identifier, Set<Passenger> passenger) {
 	super();
 //	this.specificRating = specificRating;
@@ -83,7 +83,7 @@ public Trip(String date, String pickUpLocation, String destination, //SpecificRa
 	this.arrivalTime = arrivalTime;
 	this.availableSeats = availableSeats;
 	this.isComplete = isComplete;
-	this.hasStarted = hasStarted;
+	this.ongoing = ongoing;
 	this.fare = fare;
 	this.estimatedTripDuration = estimatedTripDuration;
 	this.driverRating = driverRating;
@@ -161,12 +161,12 @@ public Boolean getIsComplete() {
    return this.isComplete;
 }
 
-public void setHasStarted(Boolean value) {
-	   this.hasStarted = value;
+public void setOngoing(Boolean value) {
+	   this.ongoing = value;
 }
 
-public Boolean getHasStarted() {
-	   return this.hasStarted;
+public Boolean getOngoing() {
+	   return this.ongoing;
 	}
 
 public void setFare(Double value) {

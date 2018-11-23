@@ -3,6 +3,7 @@ package ca.mcgill.ecse321.rideshare.tripController;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -31,6 +32,11 @@ public class TripController {
 		return tripService.getAllTrips();
 	}
 	
+  	@RequestMapping("/trips/{id}")
+        public Optional<Trip> getATrip(@RequestBody Trip trip, @PathVariable Long id) {
+                return tripService.getTrip(id);
+        }
+	
 	@RequestMapping("/passengers/{id}/trips")
 	public List<Trip> getAllTripsByPassenger(@PathVariable String id) {
 		return tripService.getAllTripsByPassenger(id);
@@ -53,15 +59,14 @@ public class TripController {
 	
 	@RequestMapping(method=RequestMethod.POST, value="/passengers/{passengerId}/trips")
 	public Trip addTripPassenger(@RequestBody Trip trip, @PathVariable String passengerId) {
-		Passenger passenger = passengerService.getPassenger(passengerId);
-		passenger.setTrip(new HashSet<Trip>() {{
-			add(trip);
-		}});
-		passengerService.updatePassenger(passengerId, passenger);
-		if(trip.getIdentifier() == 0) {
-			tripService.addTrip(trip);
-		}		
-		return trip;
+ 		Passenger passenger = passengerService.getPassenger(passengerId);
+                Set<Trip> existingTrips = passenger.getTrip();
+                existingTrips.add(trip);
+                passengerService.updatePassenger(passengerId, passenger);
+                if(trip.getIdentifier() == 0) {
+                        tripService.addTrip(trip);
+                }
+                return trip;
 		
 	}
 
@@ -70,7 +75,7 @@ public class TripController {
 		Driver driver = driverService.getDriver(driverId);
 		int age = driver.getAge();
 		int accountNumber = driver.getAccountNumber();
-		int ranking = driver.getRanking();
+		double ranking = driver.getRanking();
 		long tripCounter = driver.getTripCounter();
 		trip.setDriver(new Driver("", "", age, "", "", "",
 			"", driverId, true, accountNumber, ranking, tripCounter));
