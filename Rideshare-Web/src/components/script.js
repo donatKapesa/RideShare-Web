@@ -70,8 +70,8 @@ export default {
     filteredTrips: function () {
       while (this.trips) {
         return this.trips.filter((trip) => {
-          return trip.pickUpLocation.toLowerCase().includes(this.searchTrips)
-            || trip.destination.toLowerCase().includes(this.searchTrips)
+          return trip.pickUpLocation.toLowerCase().includes(this.searchTrips.toLowerCase())
+            || trip.destination.toLowerCase().includes(this.searchTrips.toLowerCase())
             || trip.arrivalTime.includes(this.searchTrips)
         });
       }
@@ -80,8 +80,8 @@ export default {
     filteredPassengers: function () {
       while (this.passengers) {
         return this.passengers.filter((passenger) => {
-          return passenger.firstName.toLowerCase().includes(this.searchPassengers)
-            || passenger.lastName.toLowerCase().includes(this.searchPassengers);
+          return passenger.firstName.toLowerCase().includes(this.searchPassengers.toLowerCase())
+            || passenger.lastName.toLowerCase().includes(this.searchPassengers.toLowerCase());
         });
       }
     },
@@ -89,8 +89,8 @@ export default {
     filteredDrivers: function () {
       while (this.drivers) {
         return this.drivers.filter((driver) => {
-          return driver.firstName.toLowerCase().includes(this.searchDrivers)
-            || driver.lastName.toLowerCase().includes(this.searchDrivers);
+          return driver.firstName.toLowerCase().includes(this.searchDrivers.toLowerCase())
+            || driver.lastName.toLowerCase().includes(this.searchDrivers.toLowerCase());
         });
       }
     },
@@ -98,8 +98,8 @@ export default {
     filteredActiveDrivers: function () {
       while (this.activeDrivers) {
         return this.activeDrivers.filter(activeDriver => {
-          return activeDriver.firstName.toLowerCase().includes(this.searchActiveDriver)
-            || activeDriver.lastName.toLowerCase().includes(this.searchActiveDriver);
+          return activeDriver.firstName.toLowerCase().includes(this.searchActiveDriver.toLowerCase())
+            || activeDriver.lastName.toLowerCase().includes(this.searchActiveDriver.toLowerCase());
         });
       }
     },
@@ -111,8 +111,8 @@ export default {
           console.log(activePassenger);
           console.log(activePassenger.trip.length);
           console.log(activePassenger.trip[activePassenger.trip.length - 1]);
-          return activePassenger.firstName.toLowerCase().includes(this.searchActivePassenger)
-            || activePassenger.lastName.toLowerCase().includes(this.searchActivePassenger);
+          return activePassenger.firstName.toLowerCase().includes(this.searchActivePassenger.toLowerCase())
+            || activePassenger.lastName.toLowerCase().includes(this.searchActivePassenger.toLowerCase());
         });
       }
     },
@@ -120,9 +120,9 @@ export default {
     filteredActiveTrips: function () {
       while (this.activeTrips) {
         return this.activeTrips.filter(activeTrip => {
-          return activeTrip.pickUpLocation.toLowerCase().includes(this.searchActiveTrip)
-            || activeTrip.destination.toLowerCase().includes(this.searchActiveTrip)
-            || activeTrip.arrivalTime.toLowerCase().includes(this.searchActiveTrip);
+          return activeTrip.pickUpLocation.toLowerCase().includes(this.searchActiveTrip.toLowerCase())
+            || activeTrip.destination.toLowerCase().includes(this.searchActiveTrip.toLowerCase())
+            || activeTrip.arrivalTime.toLowerCase().includes(this.searchActiveTrip.toLowerCase());
         });
       }
     }
