@@ -79,8 +79,16 @@
 
     <div id="rankings">
       <h1>Rankings</h1>
-
-       
+        <div class="medium-6 medium-offset-3 ctrl">
+         <form class="searchForm" v-on:submit.prevent="submitSearch">
+            <input type="text" placeholder="start date yyyy/mm/dd" style="text-align:center; margin-bottom:30px">
+              </form>
+        </div>
+          <div class="medium-6 medium-offset-3 ctrl">
+           <form class="searchForm" v-on:submit.prevent="submitSearch">
+          <input type="text" placeholder="end date yyyy/mm/dd" style="text-align:center; margin-bottom:30px">
+        </form>
+      </div>       
 
     <div class="table">
       <div class="column">
@@ -164,49 +172,67 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
 h1,
+h3,
 h2 {
   font-weight: normal;
+  background: #42b983;
+  color: #000000;
 }
 
 ul {
   list-style-type: none;
   padding: 0;
+  color: #42b983;
+  background: #000000;
 }
 
 li {
   display: inline-block;
   margin: 0 10px;
+  color: #42b983;
+  background: #000000;
 }
 
 a {
   color: #42b983;
+  background: #000000;
 }
 
-.rideshare {
+
+#rideshare {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   color: #2c3e50;
-  background: #f2ece8;
+  background: #000000;
 }
 
 .overview {
   display: flex;
+  background: #000000;
 }
 
 a {
   color: inherit;
+  background: #000000;
 }
+
 
 .table {
   display: flex;
+  background: #000000;
 }
 
 .column {
   flex-grow: 1;
+  color: #42b983;
+  background: #000000;
 }
 
 #fleetstatus {
   margin-bottom: 50px;
+  background: #000000;
+  color: #000000;
 }
 
 </style>
