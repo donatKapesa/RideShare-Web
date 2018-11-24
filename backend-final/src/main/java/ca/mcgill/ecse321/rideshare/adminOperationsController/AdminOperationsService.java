@@ -32,16 +32,7 @@ public class AdminOperationsService {
 	private TripService tripService;
 	
 	
-	
-	// TEST DATA
-	
-
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
-	
 	// ENDPOINTS
-	
-	
 	
 	
 	// TRIPS
@@ -50,26 +41,13 @@ public class AdminOperationsService {
 		return tripService.getAllTrips();
 	}
 
-	public String addNewtrip(Trip trip) {
-		return "YOU ADDED A NEW TRIP TO DATABASE";
-	}
-
-	public Trip updateTrip(long identifier, Trip trip) {
-		return null;
-	}
-	
-	// returns the trip we removed
-	public Trip deleteTrip(long identifier) {
-		return null;
-	}
-
 	public List<Trip> getAllActiveTrips() {
 		List<Trip> activeTrips = new ArrayList<>();
 		List<Trip> trips = new ArrayList<>();
 		trips = tripService.getAllTrips();
 		for (int i = 0; i < trips.size(); i++) {
 			Trip currentTrip = trips.get(i);
-			if (currentTrip.getHasStarted() == true && currentTrip.getIsComplete() != true){
+			if (currentTrip.getOngoing() == true && currentTrip.getIsComplete() != true){
 				activeTrips.add(currentTrip);
 			}
 		}
@@ -95,11 +73,6 @@ public class AdminOperationsService {
 		return activePassengers;
 	}
 	
-	//TODO
-	//public getActivePassengerStatus();
-	
-	
-
 	
 	// DRIVERS
 	

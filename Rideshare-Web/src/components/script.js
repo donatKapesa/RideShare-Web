@@ -32,18 +32,6 @@ export default {
     }
   },
 
-  // methods: {
-  //   sortLowestRating: function() {
-  //     console.log(this.filteredDrivers.sort());
-  //     return this.filteredDrivers.reverse();
-
-  //   },
-  //   sortHighestRating() {
-  //     console.log("bbbbb");
-  //     this.filteredDrivers.sort((a, b) => a.ranking < b.ranking ? 1 : -1);
-  //   }
-  // },
-
   created() {
 
     AXIOS.get(`/drivers`)
@@ -80,8 +68,8 @@ export default {
     filteredTrips: function () {
       while (this.trips) {
         return this.trips.filter((trip) => {
-          return trip.pickUpLocation.toLowerCase().includes(this.searchTrips)
-            || trip.destination.toLowerCase().includes(this.searchTrips)
+          return trip.pickUpLocation.toLowerCase().includes(this.searchTrips.toLowerCase())
+            || trip.destination.toLowerCase().includes(this.searchTrips.toLowerCase())
             || trip.arrivalTime.includes(this.searchTrips)
         });
       }
@@ -96,8 +84,8 @@ export default {
           a.sort((a, b) => b.tripCounter - a.tripCounter);
         }
         return a.filter((passenger) => {
-          return passenger.firstName.toLowerCase().includes(this.searchPassengers)
-            || passenger.lastName.toLowerCase().includes(this.searchPassengers);
+          return passenger.firstName.toLowerCase().includes(this.searchPassengers.toLowerCase())
+            || passenger.lastName.toLowerCase().includes(this.searchPassengers.toLowerCase());
         });
       }
     },
@@ -112,8 +100,8 @@ export default {
           array.sort((a, b) => b.ranking - a.ranking);
         }
         return array.filter((driver) => {
-          return driver.firstName.toLowerCase().includes(this.searchDrivers)
-            || driver.lastName.toLowerCase().includes(this.searchDrivers);
+          return driver.firstName.toLowerCase().includes(this.searchDrivers.toLowerCase())
+            || driver.lastName.toLowerCase().includes(this.searchDrivers.toLowerCase());
         });
       }
     },
@@ -121,21 +109,17 @@ export default {
     filteredActiveDrivers: function () {
       while (this.activeDrivers) {
         return this.activeDrivers.filter(activeDriver => {
-          return activeDriver.firstName.toLowerCase().includes(this.searchActiveDriver)
-            || activeDriver.lastName.toLowerCase().includes(this.searchActiveDriver);
+          return activeDriver.firstName.toLowerCase().includes(this.searchActiveDriver.toLowerCase())
+            || activeDriver.lastName.toLowerCase().includes(this.searchActiveDriver.toLowerCase());
         });
       }
     },
 
     filteredActivePassengers: function () {
       while (this.activePassengers) {
-        console.log(this.activePassengers);
         return this.activePassengers.filter(activePassenger => {
-          // console.log(activePassenger);
-          // console.log(activePassenger.trip.length);
-          // console.log(activePassenger.trip[activePassenger.trip.length - 1]);
-          return activePassenger.firstName.toLowerCase().includes(this.searchActivePassenger)
-            || activePassenger.lastName.toLowerCase().includes(this.searchActivePassenger);
+          return activePassenger.firstName.toLowerCase().includes(this.searchActivePassenger.toLowerCase())
+            || activePassenger.lastName.toLowerCase().includes(this.searchActivePassenger.toLowerCase());
         });
       }
     },
@@ -143,9 +127,9 @@ export default {
     filteredActiveTrips: function () {
       while (this.activeTrips) {
         return this.activeTrips.filter(activeTrip => {
-          return activeTrip.pickUpLocation.toLowerCase().includes(this.searchActiveTrip)
-            || activeTrip.destination.toLowerCase().includes(this.searchActiveTrip)
-            || activeTrip.arrivalTime.toLowerCase().includes(this.searchActiveTrip);
+          return activeTrip.pickUpLocation.toLowerCase().includes(this.searchActiveTrip.toLowerCase())
+            || activeTrip.destination.toLowerCase().includes(this.searchActiveTrip.toLowerCase())
+            || activeTrip.arrivalTime.toLowerCase().includes(this.searchActiveTrip.toLowerCase());
         });
       }
     }

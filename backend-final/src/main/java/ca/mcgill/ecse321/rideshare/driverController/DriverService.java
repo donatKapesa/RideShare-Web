@@ -18,8 +18,6 @@ public class DriverService {
 	@Autowired
 	private DriverRepository driverRepo;
 	
-	//Car car1 = new Car();
-	
 	public List<Driver> getAllDrivers() {
 		List<Driver> drivers = new ArrayList<>();
 		driverRepo.findAll().forEach(drivers::add);
@@ -31,7 +29,6 @@ public class DriverService {
 	}
 	
 	public void addDriver(Driver driver) {
-		//driver.setRanking(1);
 		driverRepo.save(driver);
 	}
 	
