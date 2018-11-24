@@ -27,12 +27,22 @@ export default {
       searchActiveDriver: '',
       searchActivePassenger: '',
       searchActiveTrip: '',
+      sortDrivers: false,
+      sortPassengers: false
     }
   },
 
-  methods: {
+  // methods: {
+  //   sortLowestRating: function() {
+  //     console.log(this.filteredDrivers.sort());
+  //     return this.filteredDrivers.reverse();
 
-  },
+  //   },
+  //   sortHighestRating() {
+  //     console.log("bbbbb");
+  //     this.filteredDrivers.sort((a, b) => a.ranking < b.ranking ? 1 : -1);
+  //   }
+  // },
 
   created() {
 
@@ -79,7 +89,13 @@ export default {
 
     filteredPassengers: function () {
       while (this.passengers) {
-        return this.passengers.filter((passenger) => {
+        var a = this.passengers;
+        if(this.sortPassengers == true) {
+          a.sort((a, b) => a.tripCounter - b.tripCounter);
+        } else {
+          a.sort((a, b) => b.tripCounter - a.tripCounter);
+        }
+        return a.filter((passenger) => {
           return passenger.firstName.toLowerCase().includes(this.searchPassengers)
             || passenger.lastName.toLowerCase().includes(this.searchPassengers);
         });
@@ -88,7 +104,14 @@ export default {
 
     filteredDrivers: function () {
       while (this.drivers) {
-        return this.drivers.filter((driver) => {
+        var array = this.drivers;
+        if(this.sortDrivers == true) {
+          // array.reverse();
+          array.sort((a, b) => a.ranking - b.ranking);
+        } else {
+          array.sort((a, b) => b.ranking - a.ranking);
+        }
+        return array.filter((driver) => {
           return driver.firstName.toLowerCase().includes(this.searchDrivers)
             || driver.lastName.toLowerCase().includes(this.searchDrivers);
         });
@@ -108,9 +131,9 @@ export default {
       while (this.activePassengers) {
         console.log(this.activePassengers);
         return this.activePassengers.filter(activePassenger => {
-          console.log(activePassenger);
-          console.log(activePassenger.trip.length);
-          console.log(activePassenger.trip[activePassenger.trip.length - 1]);
+          // console.log(activePassenger);
+          // console.log(activePassenger.trip.length);
+          // console.log(activePassenger.trip[activePassenger.trip.length - 1]);
           return activePassenger.firstName.toLowerCase().includes(this.searchActivePassenger)
             || activePassenger.lastName.toLowerCase().includes(this.searchActivePassenger);
         });

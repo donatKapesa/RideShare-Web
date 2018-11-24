@@ -85,15 +85,16 @@
     <div class="table">
       <div class="column">
         <h3>Loyal Passengers</h3>
+        <button @click="sortPassengers = !sortPassengers">Toggle Sort</button>
          <div class="medium-6 medium-offset-3 ctrl">
         <form class="searchForm" v-on:submit.prevent="submitSearch">
-          <input type="text" v-model="searchActivePassenger" placeholder="search loyal passengers..." style="text-align:center; margin-bottom:30px">
+          <input type="text" v-model="searchPassengers" placeholder="search loyal passengers..." style="text-align:center; margin-bottom:30px">
         </form>
       </div>
         <span>Name</span>
         <span>----</span>
         <span>Number of Trips</span>
-        <ul v-for="p in filteredActivePassengers">
+        <ul v-for="p in filteredPassengers">
           <span>{{p.firstName}} {{p.lastName}}</span>
           <span>----</span>
           <!-- TODO: replace with p.numberOfTrips -->
@@ -105,6 +106,7 @@
 
       <div class="column">
         <h3>Top Drivers</h3>
+        <button @click="sortDrivers = !sortDrivers">Toggle Sort</button>
         <div class="medium-6 medium-offset-3 ctrl">
         <form class="searchForm" v-on:submit.prevent="submitSearch">
           <input type="text" v-model="searchDrivers" placeholder="search top drivers..." style="text-align:center; margin-bottom:30px">
